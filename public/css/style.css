@@ -1,0 +1,182 @@
+body {
+  width: 70%;
+  margin: 0px auto;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  body #main_wrapper header {
+    display: inline-block;
+    width: 100%; }
+    body #main_wrapper header h1 {
+      position: relative;
+      float: left;
+      width: 50%; }
+    body #main_wrapper header #login_form, body #main_wrapper header #logindetails {
+      position: relative;
+      float: right;
+      width: 40%;
+      text-align: right;
+      margin: 10px 5px; }
+      body #main_wrapper header #login_form #login_user, body #main_wrapper header #logindetails #login_user {
+        margin: 25px 10px; }
+        body #main_wrapper header #login_form #login_user span, body #main_wrapper header #logindetails #login_user span {
+          margin: 0px 10px 0px 2px; }
+  body #main_wrapper nav {
+    width: 100%;
+    background: #b19c9c;
+    height: 68px; }
+    body #main_wrapper nav #menu {
+      float: left; }
+      body #main_wrapper nav #menu li {
+        list-style-type: none;
+        margin: 0;
+        display: inline-block;
+        padding: 10px; }
+        body #main_wrapper nav #menu li a {
+          color: #fff;
+          font-size: 18px;
+          text-decoration: none;
+          padding: 5px 10px; }
+        body #main_wrapper nav #menu li a:hover, body #main_wrapper nav #menu li .active {
+          background: #000; }
+    body #main_wrapper nav #search {
+      padding: 20px 10px;
+      float: right; }
+  body #main_wrapper #container {
+    width: 100%;
+    display: inline-flex;
+    min-height: 300px; }
+    body #main_wrapper #container #welcome {
+      margin-left: 100px;
+      width: 100%; }
+      body #main_wrapper #container #welcome ul {
+        margin-left: 40px; }
+    body #main_wrapper #container #user_container {
+      margin-left: 55px;
+      width: 40%;
+      padding: 10px; }
+    body #main_wrapper #container table {
+      width: 70%;
+      position: relative; }
+      body #main_wrapper #container table tr:first-child {
+        background-color: #a8a8a8;
+        text-align: center; }
+      body #main_wrapper #container table img {
+        width: 20px; }
+    body #main_wrapper #container #details_container {
+      display: none;
+      width: 39%;
+      padding: 10px; }
+      body #main_wrapper #container #details_container #details {
+        padding: 10px; }
+        body #main_wrapper #container #details_container #details .user_groups, body #main_wrapper #container #details_container #details .group_users {
+          margin-top: 10px; }
+          body #main_wrapper #container #details_container #details .user_groups a, body #main_wrapper #container #details_container #details .group_users a {
+            margin-left: 10px;
+            padding: 1px;
+            color: #666;
+            background: #FFF;
+            border-radius: 30%;
+            text-decoration: none; }
+        body #main_wrapper #container #details_container #details select {
+          margin-left: 10px; }
+        body #main_wrapper #container #details_container #details .group_tag {
+          margin: 5px 10px;
+          padding: 5px 10px;
+          background: #666;
+          color: #fff;
+          display: inline-block; }
+  body #main_wrapper .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.61);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none; }
+  body #main_wrapper .modal {
+    width: 50%;
+    position: absolute;
+    top: 25%;
+    z-index: 1020;
+    background-color: #FFF;
+    border-radius: 6px;
+    display: none; }
+    body #main_wrapper .modal .modal-header {
+      background-color: #333;
+      color: #FFF;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px; }
+      body #main_wrapper .modal .modal-header h3 {
+        margin: 0;
+        padding: 0 10px 0 10px;
+        line-height: 40px; }
+        body #main_wrapper .modal .modal-header h3 .close-modal {
+          float: right;
+          text-decoration: none;
+          color: #FFF; }
+    body #main_wrapper .modal .modal-footer {
+      background-color: #F1F1F1;
+      padding: 0 10px 0 10px;
+      line-height: 40px;
+      text-align: right;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-top: solid 1px #CCC; }
+    body #main_wrapper .modal .modal-body {
+      padding: 0 10px 0 10px;
+      clear: both;
+      width: 40%;
+      margin: 0 auto; }
+      body #main_wrapper .modal .modal-body label {
+        text-align: left; }
+      body #main_wrapper .modal .modal-body input {
+        clear: both; }
+  body #main_wrapper footer {
+    float: right; }
+  @media screen and (max-width: 800px) {
+    body #main_wrapper #container {
+      display: block; }
+      body #main_wrapper #container #welcome {
+        margin: 0px;
+        width: 100%;
+        padding: 20px;
+        margin-top: 30px; }
+      body #main_wrapper #container #user_container, body #main_wrapper #container #details_container {
+        width: 100%;
+        padding: 10px;
+        margin-left: 0px;
+        margin-top: 40px; }
+    body #main_wrapper .modal .modal-body {
+      width: 80%;
+      margin: 0px; }
+      body #main_wrapper .modal .modal-body input {
+        width: 100%;
+        clear: both; } }
+  @media screen and (max-width: 555px) {
+    body #main_wrapper header h1, body #main_wrapper header #login_form {
+      width: 100%; }
+    body #main_wrapper header #logindetails {
+      width: 100%;
+      text-align: right;
+      margin: 10px 5px;
+      float: inherit; }
+      body #main_wrapper header #logindetails #login_user {
+        margin: 10px; }
+    body #main_wrapper nav {
+      height: 160px;
+      display: inline-block; }
+      body #main_wrapper nav #menu {
+        width: 100%; }
+        body #main_wrapper nav #menu li {
+          display: block; }
+      body #main_wrapper nav #search {
+        width: 100%;
+        float: left;
+        margin-bottom: 20px; }
+    body #main_wrapper #container {
+      display: block; }
+      body #main_wrapper #container #user_container, body #main_wrapper #container #details_container {
+        width: 100%;
+        padding: 10px; } }
+
+/*# sourceMappingURL=style.css.map */

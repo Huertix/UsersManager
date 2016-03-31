@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Management System</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+<!-- <script src="js/jquery.min.js"></script> -->
+<link media="all" rel="stylesheet" href="css/style.css" type="text/css">
+<script src="js/app.js"></script>
+<script src="js/loginController.js"></script>
+<script src="js/groupController.js"></script>
+<script src="js/userController.js"></script>
+
+</head>
+<body>
+    <div id="main_wrapper">
+        <header>
+            <h1>Users Management</h1>
+            <form id="login_form" method="post" action="/login">
+                <div class="login_user">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" class="basic" size="10" >
+                </div>
+                <div class="login_password">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" class="basic" size="10">
+                    <input type="submit" hidden>
+                </div>
+            </form>
+
+            <div id="logindetails" style="display: none">
+                <div id="login_user">Logged in as: <b><span></span></b><a href="#" onclick="logOut()" class="button">Logout</a></div>
+            </div>
+        </header>
+        <nav>
+            <div id="menu">
+                <ul>
+                    <li>
+                    <a href="/" class="active"> Home </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadUsers(this)"> Users List </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadGroups(this)"> Groups List </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="search">
+                    <input name="search" placeholder="Search user ..." size="10">
+            </div>
+        </nav>
+
+        <div id="container">
+            <div id="welcome">
+                <h2>Welcome to the Users Management System.</h2>
+                <p>With this system:</p>
+                <ul>
+                    <li> You could create Users and Groups.</li>
+                    <li> You could register users into a group.</li>
+                </ul>
+                <p><span>Sign In as <b>admin</b> for full functionality. . .</span></p>
+            </div>
+            <div id="user_container">
+                <table>
+                    <tbody id="pool_list">
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="details_container">
+                <fieldset id="details">
+
+                </fieldset>
+
+            </div>
+        </div>
+        <div class="modal">
+            <div class="modal-header">
+                <h3><span>Example</span><a class="close-modal"
+                                         href="#">&times;</a></h3>
+            </div>
+            <div class="modal-body">
+                <p>A good modal Example</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+        <div class="modal-backdrop"></div>
+
+        <footer>
+            <h4>By David Huerta</h4>
+        </footer>
+    </div>
+
+    <script>
+        $("#login_form").submit( function( event ) {
+
+            // Stop form from submitting normally
+            event.preventDefault();
+
+            // Get some values from elements on the page:
+            var $form = $( this ),
+                    username = $form.find( "input[name='username']" ).val(),
+                    password = $form.find( "input[name='password']" ).val(),
+                    url = $form.attr( "action" );
+
+            login(username, password);
+
+            $form.trigger("reset");
+        });
+
+        $('#search').find('input').keyup( function(){
+            var input = $(this).val();
+
+            if (input.length >= 3) {
+                findUsers(input);
+            } else {
+                loadUsers();
+            }
+
+        });
+
+
+    </script>
+</body>
+</html>
+

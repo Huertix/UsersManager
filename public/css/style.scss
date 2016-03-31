@@ -1,0 +1,289 @@
+body {
+  width: 70%;
+  margin: 0px auto;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  #main_wrapper{
+
+    header{
+      display: inline-block;
+      width: 100%;
+
+      h1 {
+        position: relative;
+        float: left;
+        width: 50%;
+      }
+
+      #login_form, #logindetails{
+        position: relative;
+        float: right;
+        width: 40%;
+        text-align: right;
+        margin: 10px 5px;
+
+        #login_user{
+          margin: 25px 10px;
+
+          span{
+              margin: 0px 10px 0px 2px;
+          }
+        }
+      }
+    }
+
+    nav{
+      width: 100%;
+      background: #b19c9c;
+      height: 68px;
+
+      #menu{
+        float: left;
+
+        li{
+          list-style-type: none;
+          margin: 0;
+          display: inline-block;
+          padding: 10px;
+
+          a{
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 5px 10px;
+          }
+
+          a:hover, .active{
+            background: #000;
+          }
+        }
+      }
+      #search{
+        padding: 20px 10px;
+        float: right;
+      }
+    }
+
+    #container{
+      width: 100%;
+      display: inline-flex;
+      min-height: 300px;
+
+      #welcome{
+        margin-left: 100px;
+        width: 100%;
+
+        ul{
+          margin-left: 40px;
+        }
+      }
+
+      #user_container{
+        margin-left: 55px;
+        width: 40%;
+        padding: 10px;
+      }
+
+      table{
+        width: 70%;
+        position: relative;
+
+        tr:first-child {
+          background-color: #a8a8a8;
+          text-align: center;
+        }
+
+        img{
+          width: 20px;
+        }
+      }
+
+      #details_container{
+        display: none;
+        width: 39%;
+        padding: 10px;
+
+        #details{
+          padding: 10px;
+
+          .user_groups, .group_users{
+            margin-top: 10px;
+
+            a{
+              margin-left: 10px;
+              padding: 1px;
+              color: #666;
+              background: #FFF;
+              border-radius: 30%;
+              text-decoration: none;
+            }
+          }
+
+          select{
+            margin-left: 10px;
+          }
+
+          .group_tag{
+            margin: 5px 10px;
+            padding: 5px 10px;
+            background: #666;
+            color: #fff;
+            display: inline-block;
+          }
+        }
+      }
+
+    }
+    .modal-backdrop {
+      background-color: rgba(0, 0, 0, 0.61);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: none;
+    }
+    .modal {
+      width: 50%;
+      position: absolute;
+      top: 25%;
+      z-index: 1020;
+      background-color: #FFF;
+      border-radius: 6px;
+      display: none;
+      .modal-header {
+        background-color: #333;
+        color: #FFF;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        h3 {
+          margin: 0;
+          padding: 0 10px 0 10px;
+          line-height: 40px;
+          .close-modal {
+            float: right;
+            text-decoration: none;
+            color: #FFF;
+          }
+        }
+      }
+      .modal-footer {
+        background-color: #F1F1F1;
+        padding: 0 10px 0 10px;
+        line-height: 40px;
+        text-align: right;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-top: solid 1px #CCC;
+      }
+      .modal-body {
+        padding: 0 10px 0 10px;
+        clear: both;
+        width: 40%;
+        margin: 0 auto;
+        label{
+          text-align: left;
+        }
+        input{
+          clear: both;
+        }
+      }
+    }
+
+    footer{
+      float: right;
+    }
+
+  }
+
+  $break-large: 800px;
+  $break-middle: 555px;
+
+  @media screen and (max-width: $break-large) {
+
+    #main_wrapper{
+      #container{
+        display: block;
+
+        #welcome{
+          margin: 0px;
+          width: 100%;
+          padding: 20px;
+          margin-top: 30px;
+        }
+
+        #user_container, #details_container{
+          width: 100%;
+          padding: 10px;
+          margin-left: 0px;
+          margin-top: 40px;
+        }
+      }
+      .modal{
+        .modal-body {
+          width: 80%;
+          margin: 0px;
+          input {
+            width: 100%;
+            clear: both;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $break-middle) {
+
+    #main_wrapper{
+      header{
+        h1, #login_form{
+          width:100%
+        }
+
+        #logindetails{
+          width: 100%;
+          text-align: right;
+          margin: 10px 5px;
+          float: inherit;
+          #login_user{
+            margin: 10px;
+          }
+        }
+      }
+      nav{
+        height: 160px;
+        display: inline-block;
+        #menu{
+          width: 100%;
+          li{
+            display: block;
+            a{
+
+            }
+          }
+        }
+
+        #search{
+          width: 100%;
+          float: left;
+          margin-bottom: 20px;
+        }
+      }
+
+      #container{
+        display: block;
+
+        #user_container, #details_container{
+          width: 100%;
+          padding: 10px;
+        }
+      }
+    }
+  }
+
+}
+
+
+
+
