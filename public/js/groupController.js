@@ -11,21 +11,28 @@ function loadGroups(elem){
     var trHTML = "";
     var pool_list = $('#pool_list');
 
+    // hide and clean dom elements
     clear();
+    // update item active in menu
     updateNavMenu(elem);
 
+    // table header
     trHTML += '<tr><td><b>Group Name</b></td></tr>';
 
     $.getJSON("/groups", function(groups){
         $(groups).each( function(index, group) {
             trHTML += '<tr>'+
                 '<td><a href="#" onclick="groupDetails(\'' + group._id + '\')"> ' + group.name + '</a>'+ '</td>';
+
+            // delete group if admin logged
             if(getCookie('user_group') === 'admin'){
                 trHTML +=  '<td><a href="#" onclick="deleteGroup(\'' + group._id + '\')"><img src="images/trash.png"></a></td>';
             }
 
             trHTML += '</tr>';
         });
+
+        // add group if admin logged
         if(getCookie('user_group') === 'admin')
             trHTML += '<tr><td><button onclick="addGroup()">New Group</button></td></tr>';
 
@@ -33,6 +40,7 @@ function loadGroups(elem){
     });
 }
 
+// render group details
 function groupDetails(id){
     var details = $('#details');
     details.html("");
@@ -71,6 +79,7 @@ function deleteGroup(id){
     loadGroups();
 }
 
+// show a modal for adding group
 function addGroup(){
     var rHtml = '<form id="group_form" method="post" action="/groups">' +
                     '<label>name</label><input type="text" name="name"><br></form>'
@@ -80,6 +89,7 @@ function addGroup(){
     $('.modal-footer').html('<button onclick="groupModalSubmit()">OK</button>')
 }
 
+// render the selector input groups
 function renderGroupsSelector(id){
     var groups =  getGroups();
     $('#details').append($('<label>Add Group</label>'));
@@ -89,6 +99,7 @@ function renderGroupsSelector(id){
                 $('#details').find('select').append($('<option></option>').html(group.name));
             });
 }
+
 
 function groupModalSubmit(){
     var $form = $('#group_form'),
@@ -115,10 +126,7 @@ function groupModalSubmit(){
     } else {
         alert("Group already exist");
     }
-
-
-
-
+    
     $form.trigger("reset");
     $('.modal, .modal-backdrop').fadeOut('fast');
 }
