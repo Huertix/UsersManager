@@ -13,5 +13,6 @@ steps:
 1. npm install
 2. mongorestore -->   this step will insert a demo data into DB 
 3. npm start  -->   run the application
+4. login as admin - 123 for full control.
 
 In case you want modify the style.scss file, you should run "grunt default" in order to compile to style.css

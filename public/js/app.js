@@ -7,16 +7,45 @@ $(document).ready( function(){
     }
     
     $(document).on("click", function(event) {
+        // refresh cookie
         checkSession();
     });
 
+    // modal location
     modalPosition();
     $(window).resize(function(){
         modalPosition();
     });
+
+    $("#login_form").submit( function( event ) {
+
+        // Stop form from submitting normally
+        event.preventDefault();
+
+        // Get some values from elements on the page:
+        var $form = $( this ),
+            username = $form.find( "input[name='username']" ).val(),
+            password = $form.find( "input[name='password']" ).val(),
+            url = $form.attr( "action" );
+
+        login(username, password);
+
+        $form.trigger("reset");
+    });
+
+    // search users
+    $('#search').find('input').keyup( function(){
+        var input = $(this).val();
+
+        if (input.length >= 3) {
+            findUsers(input);
+        } else {
+            loadUsers();
+        }
+    });
 });
 
-
+// hide some dom elements
 function clear(){
     var pool_list = $('#pool_list');
     var details = $('#details');
@@ -28,6 +57,7 @@ function clear(){
     $('#welcome').hide();
 }
 
+// update active item in menu
 function updateNavMenu(elem){
     var children = $('#menu').find('a');
 
@@ -38,10 +68,12 @@ function updateNavMenu(elem){
     $(elem).addClass('active');
 }
 
+// function helper for sync alert msgs.
 function msg_callback(message, cb) {
     alert(message);
     cb();
 }
+
 
 function modalPosition() {
     var width = $('.modal').width();

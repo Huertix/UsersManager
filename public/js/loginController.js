@@ -1,4 +1,4 @@
-var COOKIE_EXPIRATION_TIME = 200;
+var COOKIE_EXPIRATION_TIME = 200; // in seconds
 var isUserinSession;
 
 getCookie('user_name') === '' ? isUserinSession = false : isUserinSession = true;
@@ -79,22 +79,6 @@ function getCookie(cname) {
         if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
     }
     return "";
-}
-
-function checkCookie() {
-    var username=getCookie("user_name");
-    if (username!="") {
-        return true;
-    }else{
-        username = prompt("Please enter your name:", "");
-        if (username != "" && username != null) {
-            setCookie("user_name", username, COOKIE_EXPIRATION_TIME);
-            $('#logindetails').find('span').html(username);
-            return true;
-        }else{
-            return false;
-        }
-    }
 }
 
 function logOut(){

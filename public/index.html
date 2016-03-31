@@ -94,37 +94,6 @@
             <h4>By David Huerta</h4>
         </footer>
     </div>
-
-    <script>
-        $("#login_form").submit( function( event ) {
-
-            // Stop form from submitting normally
-            event.preventDefault();
-
-            // Get some values from elements on the page:
-            var $form = $( this ),
-                    username = $form.find( "input[name='username']" ).val(),
-                    password = $form.find( "input[name='password']" ).val(),
-                    url = $form.attr( "action" );
-
-            login(username, password);
-
-            $form.trigger("reset");
-        });
-
-        $('#search').find('input').keyup( function(){
-            var input = $(this).val();
-
-            if (input.length >= 3) {
-                findUsers(input);
-            } else {
-                loadUsers();
-            }
-
-        });
-
-
-    </script>
 </body>
 </html>
 
