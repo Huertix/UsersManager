@@ -13,6 +13,7 @@ function loadUsers(elem){
     renderUsers(users);
 }
 
+// function helper for users Search input
 function findUsers(input){
     var users = getUsers();
     var preList = [];
@@ -24,6 +25,7 @@ function findUsers(input){
     renderUsers(preList);
 }
 
+// render user table
 function renderUsers(data){
     var trHTML = "";
     var pool_list = $('#pool_list');
@@ -86,6 +88,7 @@ function deleteUser(id){
     loadUsers();
 }
 
+// modal for adding user
 function addUser(){
     $('.modal-header').find('span').html("New User");
     $('.modal-body').load('addUser.html');
@@ -93,6 +96,8 @@ function addUser(){
     $('.modal-footer').html('<button onclick="userModalSubmit()">OK</button>');
 }
 
+
+// function helper. checking if group already exist for user
 function addUserGroup(select, id){
 
     var group = $(select).val();
@@ -112,7 +117,7 @@ function addUserGroup(select, id){
 
 }
 
-
+// delete group from user
 function deleteUserGroup(group, id, loadList){
     $.post('/users/removeUserGroup/' + id + '/' + group + '?_method=delete', function (data) {
         if(loadList)
@@ -120,6 +125,8 @@ function deleteUserGroup(group, id, loadList){
     });
 }
 
+
+// checking if group already exist for user
 function userIsInGroup(user, group){
 
     var userIsInGroup = false;
@@ -132,6 +139,8 @@ function userIsInGroup(user, group){
     }
     return userIsInGroup;
 }
+
+
 
 function userModalSubmit(){
     var $form = $('#user_form'),
