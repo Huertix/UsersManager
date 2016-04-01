@@ -1,4 +1,4 @@
-Application NodeJS (REST) expressJS bases.
+Application NodeJS (REST) expressJS based.
 
 Module "Users Manager" implemented with jQuery library and Sass.
 
@@ -13,9 +13,9 @@ steps:
 1. npm install
 2. mongorestore -->   this step will insert a demo data into DB 
 3. npm start  -->   run the application
-4. login as admin - 123 for full control.
+4. login as "admin - 123" for full control.
 
-In case you want modify the style.scss file, you should run "grunt default" in order to compile to style.css
+In case you want to modify the style.scss file, you should run "grunt default" in order to compile it to style.css
 
 /public/inidex.html is the entry point of the app.
 
@@ -56,4 +56,11 @@ Tree directories:
 │   └── users.js
 └── server.js
 
+
+
+TO DO:
+
+- Add pagination in users and groups list-
+- Control any User could exits with out a group.
+- Improve the design.
 
