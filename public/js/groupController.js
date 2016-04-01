@@ -81,7 +81,7 @@ function deleteGroup(id){
 
 // show a modal for adding group
 function addGroup(){
-    var rHtml = '<form id="group_form" method="post" action="/groups">' +
+    var rHtml = '<form id="group_form" onkeypress="return event.keyCode != 13" method="post" action="/groups">' +
                     '<label>name</label><input type="text" name="name"><br></form>'
     $('.modal-header').find('span').html("New Group");
     $('.modal-body').html(rHtml);
