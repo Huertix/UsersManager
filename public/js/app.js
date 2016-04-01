@@ -43,6 +43,15 @@ $(document).ready( function(){
             loadUsers();
         }
     });
+
+    // Prevent hit enter on forms
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
+
 });
 
 // hide some dom elements
