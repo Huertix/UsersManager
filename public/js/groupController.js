@@ -26,7 +26,7 @@ function loadGroups(elem){
 
             // delete group if admin logged
             if(getCookie('user_group') === 'admin'){
-                trHTML +=  '<td><a href="#" onclick="deleteGroup(\'' + group._id + '\')"><img src="images/trash.png"></a></td>';
+                trHTML +=  '<td><a href="#" onclick="deleteGroup(\'' + group._id + '\',\'' + group.name + '\')"><img src="images/trash.png"></a></td>';
             }
 
             trHTML += '</tr>';
@@ -65,17 +65,31 @@ function groupDetails(id){
 }
 
 
-function deleteGroup(id){
-    if( confirm('Delete Group') ){
-        $.post('/groups/' + id + '?_method=delete', function (group) {
-            
-            var users = getUsers();
-            $.each( users, function(index, user){
-                if( userIsInGroup(user, group.name))
-                    deleteUserGroup(group.name, user._id, false);
+function deleteGroup( id, name ){
+
+    var groupEmpty = false;
+
+    var users = getUsers();
+    $.each( users, function(index, user){
+        if( userIsInGroup(user, name))
+            groupEmpty = false;
+        else
+            groupEmpty = true;
+    });
+
+    if(groupEmpty){
+        if( confirm('Delete Group') ){
+            $.post('/groups/' + id + '?_method=delete', function (group) {
+               console.log("Group Removed: " + group.name);
             });
-        });
+        }
+
+    } else {
+        alert("Group is not Empty..");
     }
+
+
+
     loadGroups();
 }
 
