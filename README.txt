@@ -4,9 +4,9 @@ Module "Users Manager" implemented with jQuery library and Sass.
 
 steps:
 
-0. required MondoDB
-0.1 required NodeJS
-0.2 required npm
+0.  MondoDB required
+0.1 NodeJS required
+0.2 npm required
 0.3 uncomment <!-- <script src="js/jquery.min.js"></script> --> from index.html if there is not internet connection. 
 
 
@@ -16,3 +16,44 @@ steps:
 4. login as admin - 123 for full control.
 
 In case you want modify the style.scss file, you should run "grunt default" in order to compile to style.css
+
+/public/inidex.html is the entry point of the app.
+
+Tree directories:
+
+├── bin
+│   └── www
+├── dump
+│   └── usersApp
+│       ├── groups.bson
+│       ├── groups.metadata.json
+│       ├── system.indexes.bson
+│       ├── users.bson
+│       └── users.metadata.json
+├── Gruntfile.js
+├── models
+│   ├── group.js
+│   └── user.js
+├── package.json
+├── public
+│   ├── addUser.html
+│   ├── css
+│   │   ├── style.css
+│   │   ├── style.css.map
+│   │   └── style.scss
+│   ├── images
+│   │   └── trash.png
+│   ├── index.html
+│   └── js
+│       ├── app.js
+│       ├── groupController.js
+│       ├── jquery.min.js
+│       ├── loginController.js
+│       └── userController.js
+├── README.txt
+├── routes
+│   ├── groups.js
+│   └── users.js
+└── server.js
+
+
