@@ -13,18 +13,6 @@ function loadUsers(elem){
     renderUsers(users);
 }
 
-// function helper for users Search input
-function findUsers(input){
-    var users = getUsers();
-    var preList = [];
-
-    $.each(users,  function(index, user){
-        if( user.name.includes(input) )
-            preList.push(user);
-    });
-    renderUsers(preList);
-}
-
 // render user table
 function renderUsers(data){
     var trHTML = "";
@@ -50,6 +38,19 @@ function renderUsers(data){
         trHTML += '<tr><td><button onclick="addUser()">New user</button></td></tr>';
     pool_list.append(trHTML);
 }
+
+// function helper for users Search input
+function findUsers(input){
+    var users = getUsers();
+    var preList = [];
+
+    $.each(users,  function(index, user){
+        if( user.name.includes(input) )
+            preList.push(user);
+    });
+    renderUsers(preList);
+}
+
 
 function userDetails(id){
     var userGroups = [];
@@ -150,20 +151,39 @@ function userModalSubmit(){
         password_bis = $form.find( "input[name='password_bis']" ).val(),
         url = $form.attr( "action" );
 
-    // Send the data using post
+    if(userExist(name, email)){
+        alert(" User or password already exists");
+    } else {
 
-    if(password === password_bis) {
-        var posting = $.post(url, {name: name, email: email, password: password});
-        posting.done(function( user ) {
-            console.log(user._id);
-
-            loadUsers();
-        });
-    }
-    else {
-        alert("Password does not match")
+        if (password === password_bis) {
+            // Send the data using post
+            var posting = $.post(url, {name: name, email: email, password: password});
+            posting.done(function (user) {
+                console.log("new user:\n" + user._id);
+                loadUsers();
+            });
+        }
+        else {
+            alert("Password does not match")
+        }
     }
 
     $form.trigger("reset");
     $('.modal, .modal-backdrop').fadeOut('fast');
+}
+
+function userExist(name,email){
+
+    var users = getUsers();
+    var user_exists = false;
+
+    $.each(users, function( index, user){
+        console.log(user.name + '--' + name);
+        console.log(user.email + '--' + email);
+        if(user.name === name || user.email === email) {
+            user_exists = true;
+        }
+    });
+    
+    return user_exists;
 }
