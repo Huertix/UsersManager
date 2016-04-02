@@ -17,7 +17,7 @@ steps:
 
 In case you want to modify the style.scss file, you should run "grunt default" in order to compile it to style.css
 
-/public/inidex.html is the entry point of the app.
+/public/index.html is the entry point of the app.
 
 Tree directories:
 
@@ -60,8 +60,8 @@ Tree directories:
 
 TO DO:
 
-- Add pagination in users and groups list-
+- Add pagination in users and groups list.
 - Control any User could exits with out a group.
 - Improve the design.
-- Control if users exist
+- Control if users exist.
 
