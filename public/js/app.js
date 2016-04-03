@@ -29,7 +29,6 @@ $(document).ready( function(){
             url = $form.attr( "action" );
 
         login(username, password);
-
         $form.trigger("reset");
     });
 
@@ -47,8 +46,6 @@ $(document).ready( function(){
     $('.close-modal').click(function(){
         $('.modal, .modal-backdrop').fadeOut('fast');
     });
-    
-
 });
 
 // hide some dom elements
@@ -80,11 +77,9 @@ function msg_callback(message, cb) {
     cb();
 }
 
-
 function modalPosition() {
     var width = $('.modal').width();
     var pageWidth = $(window).width();
     var x = (pageWidth / 2) - (width / 2);
     $('.modal').css({left: x + "px"});
 }
-

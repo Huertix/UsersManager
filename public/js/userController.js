@@ -51,7 +51,6 @@ function findUsers(input){
     renderUsers(preList);
 }
 
-
 function userDetails(id){
     var userGroups = [];
     var details = $('#details');
@@ -97,7 +96,6 @@ function addUser(){
     $('.modal-footer').html('<button onclick="userModalSubmit()">OK</button>');
 }
 
-
 // function helper. checking if group already exist for user
 function addUserGroup(select, id){
 
@@ -140,8 +138,6 @@ function userIsInGroup(user, group){
     }
     return userIsInGroup;
 }
-
-
 
 function userModalSubmit(){
     var $form = $('#user_form'),

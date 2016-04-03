@@ -6,7 +6,6 @@ function getGroups(){
     return JSON.parse(object);
 }
 
-
 function loadGroups(elem){
     var trHTML = "";
     var pool_list = $('#pool_list');
@@ -56,14 +55,12 @@ function groupDetails(id){
         for( var i = 0; i < users.length; i++){
             var userGroups = users[i].groups;
             for( var j = 0; j < userGroups.length; j++){
-                console.log(userGroups[j] + '-----' + group.name );
                 if( userGroups[j] === group.name )
                     $('.group_users').append($('<label class="group_tag"></label>').html(users[i].name));
             }
         }
     });
 }
-
 
 function deleteGroup( id, name ){
 
@@ -88,8 +85,6 @@ function deleteGroup( id, name ){
         alert("Group is not Empty..");
     }
 
-
-
     loadGroups();
 }
 
@@ -113,7 +108,6 @@ function renderGroupsSelector(id){
                 $('#details').find('select').append($('<option></option>').html(group.name));
             });
 }
-
 
 function groupModalSubmit(){
     var $form = $('#group_form'),
