@@ -43,6 +43,10 @@ $(document).ready( function(){
             loadUsers();
         }
     });
+
+    $('.close-modal').click(function(){
+        $('.modal, .modal-backdrop').fadeOut('fast');
+    });
     
 
 });
