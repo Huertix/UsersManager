@@ -79,7 +79,7 @@ body {
         }
       }
 
-      #user_container{
+      #data_container{
         margin-left: 55px;
         width: 40%;
         padding: 10px;
@@ -217,7 +217,7 @@ body {
           margin-top: 30px;
         }
 
-        #user_container, #details_container{
+        #data_container, #details_container{
           width: 100%;
           padding: 10px;
           margin-left: 0px;
@@ -278,7 +278,7 @@ body {
       #container{
         display: block;
 
-        #user_container, #details_container{
+        #data_container, #details_container{
           width: 100%;
           padding: 10px;
         }
@@ -286,7 +286,3 @@ body {
     }
   }
 }
-
-
-
-

@@ -6,11 +6,10 @@ function getUsers(){
     return JSON.parse(object);
 }
 
-
 function loadUsers(elem){
-    var users = getUsers();
+    $('#data_container').attr('data-name','users');
     updateNavMenu(elem);
-    renderUsers(users);
+    updateList();
 }
 
 // render user table
@@ -30,12 +29,18 @@ function renderUsers(data){
             trHTML +=  '<td><a href="#" onclick="deleteUser(\'' + user._id + '\')">' +
                 '<img src="images/trash.png"></a></td>';
         }
-
         trHTML += '</tr>';
-
     });
+
+    //Pagination controllers
+    trHTML += '<tr>';
+    trHTML += '<td><button class="previous"><<</button><button class="next">>></button></td>';
+
     if(getCookie('user_group') === 'admin')
-        trHTML += '<tr><td><button onclick="addUser()">New user</button></td></tr>';
+        trHTML += '<td><button onclick="addUser()">New user</button></td>';
+
+    trHTML += '</tr>';
+
     pool_list.append(trHTML);
 }
 
@@ -127,10 +132,8 @@ function deleteUserGroup(group, id, loadList){
 
 // checking if group already exist for user
 function userIsInGroup(user, group){
-
     var userIsInGroup = false;
     var userGroups = user.groups;
-
     var index = 0;
     while (!userIsInGroup && index < userGroups.length ){
         userIsInGroup = userGroups[index] === group;

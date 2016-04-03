@@ -6,37 +6,46 @@ function getGroups(){
     return JSON.parse(object);
 }
 
-function loadGroups(elem){
+function loadGroups(elem) {
+    $('#data_container').attr('data-name', 'groups');
+    updateNavMenu(elem);
+    updateList();
+}
+
+function renderGroups(data){
     var trHTML = "";
     var pool_list = $('#pool_list');
 
     // hide and clean dom elements
     clear();
-    // update item active in menu
-    updateNavMenu(elem);
+
 
     // table header
     trHTML += '<tr><td><b>Group Name</b></td></tr>';
 
-    $.getJSON("/groups", function(groups){
-        $(groups).each( function(index, group) {
-            trHTML += '<tr>'+
-                '<td><a href="#" onclick="groupDetails(\'' + group._id + '\')"> ' + group.name + '</a>'+ '</td>';
+    $(data).each( function(index, group) {
+        trHTML += '<tr>'+
+            '<td><a href="#" onclick="groupDetails(\'' + group._id + '\')"> ' + group.name + '</a>'+ '</td>';
 
-            // delete group if admin logged
-            if(getCookie('user_group') === 'admin'){
-                trHTML +=  '<td><a href="#" onclick="deleteGroup(\'' + group._id + '\',\'' + group.name + '\')"><img src="images/trash.png"></a></td>';
-            }
-
-            trHTML += '</tr>';
-        });
-
-        // add group if admin logged
-        if(getCookie('user_group') === 'admin')
-            trHTML += '<tr><td><button onclick="addGroup()">New Group</button></td></tr>';
-
-        pool_list.append(trHTML);
+        // delete group if admin logged
+        if(getCookie('user_group') === 'admin'){
+            trHTML +=  '<td><a href="#" onclick="deleteGroup(\'' + group._id + '\',\'' + group.name + '\')"><img src="images/trash.png"></a></td>';
+        }
+        trHTML += '</tr>';
     });
+
+    //Pagination controllers
+    trHTML += '<tr>';
+    trHTML += '<td><button class="previous"><<</button><button class="next">>></button></td>';
+
+    // add group if admin logged
+    if(getCookie('user_group') === 'admin')
+        trHTML += '<td><button onclick="addGroup()">New Group</button></td>';
+
+    trHTML += '</tr>';
+
+    pool_list.append(trHTML);
+
 }
 
 // render group details
@@ -62,17 +71,17 @@ function groupDetails(id){
     });
 }
 
-function deleteGroup( id, name ){
+function deleteGroup( id, group ){
 
-    var groupEmpty = false;
-
+    var groupEmpty = true ;
     var users = getUsers();
-    $.each( users, function(index, user){
-        if( userIsInGroup(user, name))
+
+    for( var i = 0; i < users.length; i++){
+        if ( userIsInGroup( users[i], group )){
             groupEmpty = false;
-        else
-            groupEmpty = true;
-    });
+            break;
+        }
+    }
 
     if(groupEmpty){
         if( confirm('Delete Group') ){
@@ -121,7 +130,7 @@ function groupModalSubmit(){
         if(group.name === name){
             groupExists = true;
         }
-    })
+    });
 
     if(!groupExists){
         // Send the data using post

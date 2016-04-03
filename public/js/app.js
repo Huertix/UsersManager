@@ -1,3 +1,9 @@
+// variables for pagination
+var pageSize = 4;
+var currentPage = 1;
+var pagedResults = [];
+var totalResults;
+
 $(document).ready( function(){
 
     if( getCookie('user_name') !== ''){
@@ -43,10 +49,56 @@ $(document).ready( function(){
         }
     });
 
-    $('.close-modal').click(function(){
+    $('.close-modal').click( function(){
         $('.modal, .modal-backdrop').fadeOut('fast');
     });
+
+
 });
+
+
+function updateList(){
+    var end = (currentPage * pageSize);
+    var start = (end - pageSize);
+    var collection =  [];
+    var list_type = $('#data_container').attr('data-name');
+
+    if( list_type === 'users'){
+        collection = getUsers();
+        totalResults = collection.length;
+        pagedResults = collection.slice(start, end);
+        renderUsers(pagedResults);
+    } else if( list_type === 'groups'){
+        collection = getGroups();
+        totalResults = collection.length;
+        pagedResults = collection.slice(start, end);
+        renderGroups(pagedResults);
+    }
+
+
+    if (currentPage <= 1) {
+        $('.previous').prop("disabled", true);
+    } else {
+        $('.previous').prop("disabled", false);
+    }
+
+    if ((currentPage * pageSize) >= totalResults) {
+        $('.next').prop("disabled", true);
+    } else {
+        $('.next').prop("disabled", false);
+    }
+
+    $('.next').click( function(){
+        if ((currentPage * pageSize) <= totalResults) currentPage++;
+        updateList();
+    });
+
+    $('.previous').click( function(){
+        if (currentPage > 1) currentPage--;
+        updateList();
+    });
+}
+
 
 // hide some dom elements
 function clear(){
@@ -60,6 +112,11 @@ function clear(){
     $('#welcome').hide();
 }
 
+function resetPagination(){
+    currentPage = 1;
+    pagedResults = [];
+}
+
 // update active item in menu
 function updateNavMenu(elem){
     var children = $('#menu').find('a');
@@ -69,6 +126,8 @@ function updateNavMenu(elem){
     });
 
     $(elem).addClass('active');
+
+    resetPagination();
 }
 
 // function helper for sync alert msgs.
