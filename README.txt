@@ -61,7 +61,5 @@ Tree directories:
 TO DO:
 
 - Add pagination in users and groups list.
-- Control any User could exits with out a group.
+- Control any User could exits without a group.
 - Improve the design.
-- Control if users exist.
-

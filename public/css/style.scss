@@ -135,15 +135,6 @@ body {
       }
 
     }
-    .modal-backdrop {
-      background-color: rgba(0, 0, 0, 0.61);
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: none;
-    }
     .modal {
       width: 50%;
       position: absolute;
@@ -168,6 +159,22 @@ body {
           }
         }
       }
+      .modal-body {
+        padding: 0 10px 0 10px;
+        clear: both;
+        width: 40%;
+        margin: 0 auto;
+
+        .modal-row{
+          width: 85%;
+          label{
+            text-align: left;
+          }
+          input{
+            clear: both;
+          }
+        }
+      }
       .modal-footer {
         background-color: #F1F1F1;
         padding: 0 10px 0 10px;
@@ -177,18 +184,15 @@ body {
         border-bottom-left-radius: 5px;
         border-top: solid 1px #CCC;
       }
-      .modal-body {
-        padding: 0 10px 0 10px;
-        clear: both;
-        width: 40%;
-        margin: 0 auto;
-        label{
-          text-align: left;
-        }
-        input{
-          clear: both;
-        }
-      }
+    }
+    .modal-backdrop {
+      background-color: rgba(0, 0, 0, 0.61);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: none;
     }
 
     footer{
@@ -281,7 +285,6 @@ body {
       }
     }
   }
-
 }
 
 
