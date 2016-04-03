@@ -150,9 +150,18 @@ function userModalSubmit(){
         password_bis = $form.find( "input[name='password_bis']" ).val(),
         url = $form.attr( "action" );
 
-    if(userExist(name, email)){
+
+    // Input validation
+    if( name === "" || email === "" || password === ""){
+        alert("All fields are required");
+    }
+    else if(userExist(name, email)){
         alert(" User or password already exists");
-    } else {
+    }
+    else if( !/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i.test(email) ){
+        alert('Wrong email input');
+    }
+    else {
 
         if (password === password_bis) {
             // Send the data using post
